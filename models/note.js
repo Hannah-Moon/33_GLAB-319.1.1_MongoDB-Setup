@@ -3,7 +3,7 @@
 // Schema?? What the data should look like when saved to the database. How it’s organized.
 
 const mongoose = require("mongoose")
-const noteSchema =  new mongoose.Schema({
+const noteSchema = new mongoose.Schema({
     title: String,
     body:  String
 })

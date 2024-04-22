@@ -14,6 +14,7 @@ const Note = require("./models/note");
 const notesController = require("./controller/notesController.js");
 const cors = require("cors");
 // ---> Recieving reqs on cross-origins **
+app.use(express.urlencoded());    /// --> We need to add this line of code everytime to POST the data on POSTMAN. 
 app.use(express.json());
 // Express doesnt naturally convert our data to json
 app.use(cors());
