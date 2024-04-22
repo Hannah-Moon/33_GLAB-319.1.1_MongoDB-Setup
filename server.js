@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////
 
 require("dotenv").config();
-// -----> allows .env
+// -----> allows .env 
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -44,4 +44,4 @@ app.delete("/notes/:id", notesController.deleteNote);
 app.listen(PORT, () => {
   console.log(`Express Server Listening on port num: ${PORT}`);
 });
-// -------------------------------------------------Server
+// -------------------------------------------------Server 
