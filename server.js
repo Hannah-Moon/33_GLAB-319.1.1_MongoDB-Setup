@@ -2,62 +2,45 @@
 ///////////////// Meta Set Up /////////////////
 ///////////////////////////////////////////////
 
-
-require("dotenv").config()
-// ------> allows .env
-
+require("dotenv").config();
+// -----> allows .env
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 4000;
-const connecToDb = require('./config/connectToDB.js') // This pulls our Mongoose connection into application
-const cors = require('cors')  // Allow us use in our request. Recieving reqs on cross-origins **
+const PORT = process.env.PORT || 3000;
+const connectToDb = require("./config/connectToDb.js");
+// This pulls our Mongoose connection into application
 
-
-// ------------------------------------------ [ middleware ]
-
-app.use(express.json())
-// Express convert data to json because express doesn't naturally convert our data to json 
-
-// Sign up for this account: https://www.mongodb.com/products/tools/compass
-app.use(cors())
+const Note = require("./models/note");
+const notesController = require("./controllers/notesController.js");
+const cors = require("cors");
+// ---> Recieving reqs on cross-origins **
+app.use(express.json());
+// Express doesnt naturally convert our data to json
+app.use(cors());
+connectToDb();
+// This initializes our connectToDB() function
+// -------------------------------------------------reQs
 
 
 app.get("/", (req, res) => {
-    res.send("This is a landing page")
-})
+  res.send("This is a Landing Page");
+});
 
-// ------------------------------------------ [ Routing ]
-// Obj: We want to establish CRUD routes for our Notes Model.
-
-app.post('/notes', {})
-// Create a note
-// ------------------------------------------ * Create
-
-app.get("/notes/:id", {})
-// Get a Specific Note by ID
-
-app.get("/notes", {})
-// Get all notes
-
-// ------------------------------------------ * Read
-
-get.put("/notes/:id",{})
-// ------------------------------------------ * Update
-
-
-get.delete("/notes/:id")
-// ------------------------------------------ * Delete
-// --- ~ --- ~ --- ~ --- ~ --- ~ --- ~ --- ~ --- ~ --- ~ --- ~ --- ~ --- ~ --- ~ --- ~
-
-
-
-
-// --------------------- [ Database Connection ]
+// Obj: We want to establish CRUD routes for our Notes Model
+app.get("/notes", notesController.fetchAllNotes);
+// -----------------> GET all Notes - [Read]
+app.get("/notes/:id", notesController.fetchNote);
+// -----------------> GET a Specific Note by ID - [Read]
+app.post("/notes", notesController.createNote);
+// -----------------> Create a Notes - [Create / POST]
+app.put("/notes/:id", notesController.updateNote);
+// -----------------> Update a Specific Note - [Update]
+app.delete("/notes/:id", notesController.deleteNote);
+// -----------------> Delete a Specific Note - [Delete]
+// -------------------------------------------------Routing
 
 
 app.listen(PORT, () => {
-    console.log(`Express Server listening on port num: ${PORT}`)
-})
-
-
-connecToDb()  //--> This initializes our connecttoDB() Function 
+  console.log(`Express Server Listening on port num: ${PORT}`);
+});
+// -------------------------------------------------Server
