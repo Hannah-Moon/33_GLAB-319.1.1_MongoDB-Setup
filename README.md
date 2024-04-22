@@ -32,12 +32,12 @@ MongoDB is an open source NoSQL database management program and is a document da
 
  → npm i -D nodemom     # Install nodemon (Use this for only development. Not for the production.
 
- → change "start" script in package.json: "start": "node index"  # Keep resetting the server every time I make changes.
+ → change "start" script in package.json: "start": "node server"  # Keep resetting the server every time I make changes.
    or
- → change "start" script in package.json: "dev": "nodemon index" # consistently watch it.
+ → change "start" script in package.json: "dev": "nodemon server" # consistently watch it.
 
  → open two terminals
- → npm start            # short for "node index.js" 
+ → npm start            # short for "node server.js" 
  → OR npm run dev       # run everything and starts a server
 
 ```
