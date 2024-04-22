@@ -7,11 +7,11 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
-const connectToDb = require("./config/connectToDb.js");
+const connectToDb = require("./config/connectToDB.js");
 // This pulls our Mongoose connection into application
 
 const Note = require("./models/note");
-const notesController = require("./controllers/notesController.js");
+const notesController = require("./controller/notesController.js");
 const cors = require("cors");
 // ---> Recieving reqs on cross-origins **
 app.use(express.json());
