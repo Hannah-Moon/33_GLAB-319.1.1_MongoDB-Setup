@@ -18,7 +18,7 @@ MongoDB is an open source NoSQL database management program and is a document da
 - Install MongoDB Compass.
 - Connect to the database through MongoDB Compass.
   
-## Key take away
+## Set-up Enviornment
 - The guiding instructional code was written by an instructor, and I revised it with my personal notes.
 
 ```rb
