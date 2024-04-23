@@ -24,7 +24,7 @@ MongoDB is an open source NoSQL database management program and is a document da
 ```rb
 
 
-// ---------------------------------[Pre-steps]
+## Pre-steps
 
  → npm init -y          # Initialize express project
  → npm i nodemon express mongoose dotenv cors   # Install all of these to connect with mongoose
